@@ -3,6 +3,7 @@ package com.hiephk.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import com.hiephk.model.Product;
 import com.hiephk.payload.request.ProductRequest;
 import com.hiephk.service.ProductService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/product")
 public class ProductController {
