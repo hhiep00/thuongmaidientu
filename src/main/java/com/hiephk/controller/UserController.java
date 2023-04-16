@@ -1,6 +1,7 @@
 package com.hiephk.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +13,7 @@ import com.hiephk.payload.request.ChangePasswordRequest;
 import com.hiephk.payload.request.RegisterRequest;
 import com.hiephk.service.UserService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/user")
 public class UserController {

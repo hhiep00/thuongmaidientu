@@ -3,6 +3,7 @@ package com.hiephk.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import com.hiephk.model.Rating;
 import com.hiephk.payload.request.RatingRequest;
 import com.hiephk.service.RatingService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/rating")
 public class RatingController {
