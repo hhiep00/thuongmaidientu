@@ -22,17 +22,21 @@ import lombok.NoArgsConstructor;
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int _id;
 	@Column
 	private String name;
 	@Column
 	private String description;
 	@Column
-	private float sale;
+	private String category; 
 	@Column
-	private Date publish_on;
+	private String brand; 
+	@Column
+	private Date createdAt;
 	@Column
 	private int views;
 	@Column
 	private int price;
+	@Column
+	private String image;
 }

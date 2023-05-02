@@ -40,6 +40,10 @@ public class UserService {
 		return userRepo.findByEmail(email);
 	}
 
+	public void save(User user) {
+		userRepo.save(user);
+	}
+
 	
 	
 }

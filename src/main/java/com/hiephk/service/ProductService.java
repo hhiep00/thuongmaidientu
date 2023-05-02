@@ -21,8 +21,7 @@ public class ProductService {
 		return productRepo.save(Product.builder()
 				.name(productRequest.getName())
 				.description(productRequest.getDescription())
-				.sale(0.0f)
-				.publish_on(new Date())
+				.createdAt(new Date())
 				.views(0)
 				.price(productRequest.getPrice())
 				.build());
@@ -34,6 +33,16 @@ public class ProductService {
 
 	public Optional<Product> findById(Integer id) {
 		return productRepo.findById(id);
+	}
+
+	public List<Product> searchProduct(int page, String brand, String category, String query) {
+		
+		
+		return productRepo.findAll();
+	}
+
+	public Product save(Product product) {
+		return productRepo.save(product);
 	}
 	
 	
