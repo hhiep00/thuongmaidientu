@@ -1,0 +1,62 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: 12345678
+    url: jdbc:mysql://localhost:3306/ecommerce
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    password: iglrgkmweibcpruh
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    username: hhiep1hk@gmail.com
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 119697998815-6q0jdsf9okp606e164lfhhabjpbnkjhk.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+            - email
+            - profile
+#          facebook:
+#            clientId: 628847308717902
+#            clientSecret: 29b770e29f738c23c8a043542b84df71
+#            scope:
+#            - email
+#            - public_profile
+
+google:
+  app:
+    id: 119697998815-6q0jdsf9okp606e164lfhhabjpbnkjhk.apps.googleusercontent.com
+    secret: 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
+  redirect:
+    uri: http://localhost:8080/login-google
+  link:
+    get:
+      token: https://accounts.google.com/o/oauth2/token
+      user_info: https://www.googleapis.com/oauth2/v1/userinfo?access_token=
+    
+facebook:
+  app:
+    id: 628847308717902
+    secret: 29b770e29f738c23c8a043542b84df71
+  redirect:
+    uri: http://localhost:8080/login-facebook
+  link:
+    get:
+      token: https://graph.facebook.com/oauth/access_token?client_id=%s&client_secret=%s&redirect_uri=%s&code=%s
+      user_info: https://graph.facebook.com/me?fields=id,name,email,picture&access_token=
+    
+    
+    
+    
