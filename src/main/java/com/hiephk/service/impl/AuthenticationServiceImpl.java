@@ -20,6 +20,8 @@ import com.hiephk.service.AuthenticationService;
 import com.hiephk.service.JwtService;
 import com.hiephk.service.UserService;
 
+import jakarta.servlet.http.Cookie;
+
 
 
 @Service
@@ -38,7 +40,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 	@Override
 	public AuthenticationResponse register(RegisterRequest request) {
 		User user = User.builder()
-				.username(request.getUsername())
+				.username(request.getEmail())
 				.email(request.getEmail())
 				.password(passwordEncoder.encode(request.getPassword()))
 				.phoneNumber(request.getPhoneNumber())
@@ -53,8 +55,8 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 
 	@Override
 	public AuthenticationResponse authenticate(AuthenticationRequest request) {
-//		authenticationManager
-//				.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+		authenticationManager
+				.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
 		User person = userService.findByEmail(request.getEmail()).orElseThrow();
 		var jwtToken = jwtService.generateToken(person);
 		return new AuthenticationResponse(jwtToken);

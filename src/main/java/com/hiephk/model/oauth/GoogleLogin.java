@@ -72,6 +72,10 @@ public class GoogleLogin {
         System.out.println(jwtToken);
         response.addCookie(cookie);
 
-        return new RedirectView("http://localhost:3000/");
+        RedirectView redirectView = new RedirectView("http://localhost:3000/");
+
+        // Add the token as a query parameter in the URL
+        redirectView.addStaticAttribute("token", jwtToken);
+        return redirectView;
     }
 }
