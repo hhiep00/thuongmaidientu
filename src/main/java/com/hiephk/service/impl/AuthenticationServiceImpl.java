@@ -53,9 +53,9 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 
 	@Override
 	public AuthenticationResponse authenticate(AuthenticationRequest request) {
-		authenticationManager
-				.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
-		User person = userService.findByUsername(request.getUsername()).orElseThrow();
+//		authenticationManager
+//				.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+		User person = userService.findByEmail(request.getEmail()).orElseThrow();
 		var jwtToken = jwtService.generateToken(person);
 		return new AuthenticationResponse(jwtToken);
 	}

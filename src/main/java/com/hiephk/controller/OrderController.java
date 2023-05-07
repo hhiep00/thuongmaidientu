@@ -2,7 +2,9 @@ package com.hiephk.controller;
 
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,7 @@ import com.hiephk.service.OrderDetailService;
 import com.hiephk.service.OrderService;
 import com.hiephk.service.ProductService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/order")
 public class OrderController {
