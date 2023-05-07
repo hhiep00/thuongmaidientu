@@ -28,6 +28,8 @@ public class Rating {
 	@Column
 	private int productId;
 	@Column
+	private String username;
+	@Column
 	private Date time;
 	@Column
 	private float rating;

@@ -1,5 +1,6 @@
 package com.hiephk.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hiephk.model.Product;
 import com.hiephk.payload.request.ProductRequest;
+import com.hiephk.payload.response.ProductResponse;
 import com.hiephk.service.ProductService;
+import com.hiephk.service.RatingService;
 
 @CrossOrigin("*")
 @RestController
@@ -25,14 +28,26 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	@Autowired
+	private RatingService ratingService;
+	
 	@GetMapping("")
 	public List<Product> getAllProducts(){
 		return productService.findAll();
 	}
 	
 	@GetMapping("/{productId}")
-	public Product getOneProduct(@PathVariable int productId){
-		return productService.findById(productId).get();
+	public ProductResponse getOneProduct(@PathVariable int productId){
+		Product product = productService.findById(productId).get();
+		return ProductResponse.builder()
+				.name(product.getName())
+				.description(product.getDescription())
+				.price(product.getPrice())
+				.brand(product.getBrand())
+				.category(product.getCategory())
+				.image(product.getImage())
+				.ratings(ratingService.findByProductId(productId))
+				.build();
 	}
 	
 	@PostMapping("")

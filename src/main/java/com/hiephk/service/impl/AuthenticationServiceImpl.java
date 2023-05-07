@@ -50,7 +50,13 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 		userService.save(user);
 		System.out.println(user.getId());
 		var jwtToken = jwtService.generateToken(user);
-		return new AuthenticationResponse(jwtToken);
+		return AuthenticationResponse.builder()
+				._id(user.getId())
+				.name(user.getEmail())
+				.email(user.getEmail())
+				.isAdmin(true)
+				.token(jwtToken)
+				.build();
 	}
 
 	@Override
@@ -59,7 +65,13 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 				.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
 		User person = userService.findByEmail(request.getEmail()).orElseThrow();
 		var jwtToken = jwtService.generateToken(person);
-		return new AuthenticationResponse(jwtToken);
+		return AuthenticationResponse.builder()
+				._id(person.getId())
+				.name(person.getEmail())
+				.email(person.getEmail())
+				.isAdmin(true)
+				.token(jwtToken)
+				.build();
 	}
 
 }
