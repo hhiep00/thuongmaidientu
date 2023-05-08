@@ -24,7 +24,7 @@ import com.hiephk.service.RatingService;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/api/products")
 public class ProductController {
 	
 	@Autowired

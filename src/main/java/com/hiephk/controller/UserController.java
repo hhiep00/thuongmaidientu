@@ -15,7 +15,7 @@ import com.hiephk.service.UserService;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
 
 	@Autowired

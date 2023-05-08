@@ -21,7 +21,7 @@ import com.hiephk.service.ProductService;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/api/order")
 public class OrderController {
 	@Autowired
 	private OrderService orderService;

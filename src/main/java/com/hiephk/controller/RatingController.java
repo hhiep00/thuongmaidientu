@@ -18,7 +18,7 @@ import com.hiephk.service.RatingService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/reviews")
+@RequestMapping("/api/reviews")
 public class RatingController {
 	@Autowired
 	private RatingService ratingService;

@@ -12,7 +12,7 @@ import com.hiephk.service.RoleService;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/role")
+@RequestMapping("/api/role")
 public class RoleController {
 
 	@Autowired
