@@ -23,22 +23,22 @@ spring:
       client:
         registration:
           google:
-            client-id: 119697998815-6q0jdsf9okp606e164lfhhabjpbnkjhk.apps.googleusercontent.com
-            client-secret: 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
+            client-id: 
+            client-secret:
             scope:
             - email
             - profile
 #          facebook:
-#            clientId: 628847308717902
-#            clientSecret: 29b770e29f738c23c8a043542b84df71
+#            clientId: 
+#            clientSecret: 
 #            scope:
 #            - email
 #            - public_profile
 
 google:
   app:
-    id: 119697998815-6q0jdsf9okp606e164lfhhabjpbnkjhk.apps.googleusercontent.com
-    secret: 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
+    id: 
+    secret: 
   redirect:
     uri: http://localhost:8080/login-google
   link:
@@ -48,8 +48,8 @@ google:
     
 facebook:
   app:
-    id: 628847308717902
-    secret: 29b770e29f738c23c8a043542b84df71
+    id: 
+    secret: 
   redirect:
     uri: http://localhost:8080/login-facebook
   link:
