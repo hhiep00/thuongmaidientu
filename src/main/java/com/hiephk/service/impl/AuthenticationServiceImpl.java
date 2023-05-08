@@ -48,10 +48,10 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 				.role("USER")
 				.build();
 		userService.save(user);
-		System.out.println(user.getId());
+		System.out.println(user.get_id());
 		var jwtToken = jwtService.generateToken(user);
 		return AuthenticationResponse.builder()
-				._id(user.getId())
+				._id(user.get_id())
 				.name(user.getEmail())
 				.email(user.getEmail())
 				.isAdmin(true)
@@ -66,7 +66,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 		User person = userService.findByEmail(request.getEmail()).orElseThrow();
 		var jwtToken = jwtService.generateToken(person);
 		return AuthenticationResponse.builder()
-				._id(person.getId())
+				._id(person.get_id())
 				.name(person.getEmail())
 				.email(person.getEmail())
 				.isAdmin(true)

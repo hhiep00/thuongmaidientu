@@ -24,6 +24,8 @@ public class ProductService {
 				.createdAt(new Date())
 				.views(0)
 				.price(productRequest.getPrice())
+				.brand(productRequest.getBrand())
+				.category(productRequest.getCategory())
 				.build());
 	}
 

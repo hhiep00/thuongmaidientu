@@ -27,7 +27,7 @@ public class UserService {
 	
 	public User save(ChangePasswordRequest request, int userId) {
 		return userRepo.save(User.builder()
-				.id(userId)
+				._id(userId)
 				.email(request.getEmail())
 				.password(request.getPassword())
 				.build());

@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int _id;
 	@Column
 	private String orderStatus;
 	@Column

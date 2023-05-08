@@ -30,7 +30,7 @@ public class RatingService {
 				.rating(request.getRating())
 				.comment(request.getComment())
 				.createdAt(new Date())
-				.userId(user.getId())
+				.userId(user.get_id())
 				.productId(productId)
 				.build());
 	}

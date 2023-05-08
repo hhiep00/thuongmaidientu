@@ -48,13 +48,13 @@ public class OrderController {
 		}
 		System.out.println(order.toString());
 		
-		Optional<OrderDetail> orderDetailOptional = orderDetailService.findByOrderIdAndProductId(order.getId(), request.getProductId());
+		Optional<OrderDetail> orderDetailOptional = orderDetailService.findByOrderIdAndProductId(order.get_id(), request.getProductId());
 		Product product = productService.findById(request.getProductId()).get();
 		
 		if(orderDetailOptional.isEmpty()) {
 			orderDetailService.save(OrderDetail.builder()
 					.productId(product.get_id())
-					.orderId(order.getId())
+					.orderId(order.get_id())
 					.price(product.getPrice())
 					.quantity(1)
 					.build());
@@ -69,7 +69,7 @@ public class OrderController {
 		return OrderResponse.builder()
 				.userId(request.getUserId())
 				.orderStatus("closed")
-				.orderDetails(orderDetailService.findByOrderId(order.getId()))
+				.orderDetails(orderDetailService.findByOrderId(order.get_id()))
 				.build();
 	}
 }
