@@ -16,12 +16,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class ProductResponse {
+	private int _id;
 	private String name;
 	private String description;
 	private int price;
 	private String brand;
 	private String category;
 	private String image;
-	private List<Rating> ratings;
+	private List<Rating> reviews;
 	private Date createdAt;
 }

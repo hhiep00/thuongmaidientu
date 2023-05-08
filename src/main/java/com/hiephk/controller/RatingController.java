@@ -15,9 +15,10 @@ import com.hiephk.model.Rating;
 import com.hiephk.payload.request.RatingRequest;
 import com.hiephk.service.RatingService;
 
-@CrossOrigin("*")
+
+@CrossOrigin
 @RestController
-@RequestMapping("/rating")
+@RequestMapping("/reviews")
 public class RatingController {
 	@Autowired
 	private RatingService ratingService;

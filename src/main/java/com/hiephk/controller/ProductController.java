@@ -1,5 +1,6 @@
 package com.hiephk.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hiephk.model.Product;
 import com.hiephk.payload.request.ProductRequest;
 import com.hiephk.payload.response.ProductResponse;
+import com.hiephk.payload.response.SearchProductResponse;
 import com.hiephk.service.ProductService;
 import com.hiephk.service.RatingService;
 
@@ -40,13 +42,14 @@ public class ProductController {
 	public ProductResponse getOneProduct(@PathVariable int productId){
 		Product product = productService.findById(productId).get();
 		return ProductResponse.builder()
+				._id(productId)
 				.name(product.getName())
 				.description(product.getDescription())
 				.price(product.getPrice())
 				.brand(product.getBrand())
 				.category(product.getCategory())
 				.image(product.getImage())
-				.ratings(ratingService.findByProductId(productId))
+				.reviews(ratingService.findByProductId(productId))
 				.build();
 	}
 	
@@ -69,8 +72,19 @@ public class ProductController {
 	}
 	
 	@GetMapping("/search")
-	public List<Product> searchProduct(@RequestParam(name = "page") int page, @RequestParam(name = "brand") String brand,
+	public SearchProductResponse searchProduct(@RequestParam(name = "page") int page, @RequestParam(name = "brand") String brand,
 			@RequestParam(name = "category") String category, @RequestParam(name = "query") String query){
-		return productService.searchProduct(page, brand, category, query);
+		List<Product> list = productService.searchProduct(page, brand, category, query);
+		List<String> brands = new ArrayList<>();
+		brands.add("hehe");
+		brands.add("huhu");
+		return SearchProductResponse.builder()
+				.countProducts(list.size())
+				.productDocs(list)
+				.brands(brands)
+				.categories(brands)
+				.page(1)
+				.pages(1)
+				.build();
 	}
 }

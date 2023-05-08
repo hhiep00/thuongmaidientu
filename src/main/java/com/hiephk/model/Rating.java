@@ -30,7 +30,7 @@ public class Rating {
 	@Column
 	private String username;
 	@Column
-	private Date time;
+	private Date createdAt;
 	@Column
 	private float rating;
 	@Column
