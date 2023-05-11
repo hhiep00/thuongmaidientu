@@ -1,5 +1,7 @@
 package com.hiephk.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +37,16 @@ public class OrderController {
 	public OrderResponse getOneOrder(@PathVariable int orderId) {
 		try {
 			return orderService.getOrderById(orderId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@GetMapping("/orders-user")
+	public List<OrderResponse> getAllOrder() {
+		try {
+			return orderService.getAllOrder();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

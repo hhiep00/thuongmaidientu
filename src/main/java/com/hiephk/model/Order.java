@@ -24,7 +24,7 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int _id;
 	@Column
-	private int totalPrice;
+	private float totalPrice;
 	@Column
 	private Date createdAt;
 	@Column

@@ -105,5 +105,18 @@ public class OrderService {
 		return orderResponse;
 	}
 	
+	public List<OrderResponse> getAllOrder() {
+		Object email = SecurityContextHolder.getContext().getAuthentication().getName();
+		int userId = userRepo.findByEmail(email.toString()).get().get_id();
+		
+		List<Order> orders = orderRepo.findByUserId(userId);
+		List<OrderResponse> orderResponses = new ArrayList<>();
+		
+		for(Order order:orders) {
+			orderResponses.add(getOrderById(order.get_id()));
+		}
+		return orderResponses;
+	}
+	
 	
 }

@@ -19,7 +19,7 @@ public class OrderResponse {
 	private int user;
 	private int _id;
 	private int __v;
-	private int totalPrice;
+	private float totalPrice;
 	private boolean isIsPaid;
 	private Address shippingAddress;
 	private Date createdAt;

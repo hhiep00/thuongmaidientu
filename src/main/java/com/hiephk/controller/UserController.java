@@ -5,10 +5,12 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +29,8 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 //	@PostMapping("/register")
 //	public User register(@RequestBody RegisterRequest registerRequest) {
 //		if (userService.findByEmail(registerRequest.getEmail()).isEmpty()
@@ -83,5 +87,22 @@ public class UserController {
 				.isIsAdmin(k)
 				.createdAt(new Date())
 				.build();
+	}
+	
+	@PutMapping("/{userId}")
+	public String changePassword(@RequestBody ChangePasswordRequest request, @PathVariable int userId) {
+		User user = userService.findById(userId).get();
+		boolean k = false;
+		if(user.getRole() != null)
+			if(!user.getRole().equals("ADMIN"))
+				k=true;
+		try {
+			user.setPassword(passwordEncoder.encode(request.getPassword()));
+			userService.save(user);
+			return "Change password success";
+		} catch (Exception e) {
+			return "Change password fail";
+		}
+		
 	}
 }
