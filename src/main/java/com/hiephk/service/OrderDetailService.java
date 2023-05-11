@@ -22,10 +22,5 @@ public class OrderDetailService {
 	public <S extends OrderDetail> S save(S entity) {
 		return orderDetailRepo.save(entity);
 	}
-
-	public Optional<OrderDetail> findByOrderIdAndProductId(int orderId, int productId) {
-		return orderDetailRepo.findByOrderIdAndProductId(orderId, productId);
-	}
-	
 	
 }

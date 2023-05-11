@@ -11,5 +11,4 @@ import com.hiephk.model.OrderDetail;
 @Repository
 public interface OrderDetailRepo extends JpaRepository<OrderDetail, Integer>{
 	List<OrderDetail> findByOrderId(int orderId);
-	Optional<OrderDetail> findByOrderIdAndProductId(int orderId, int productId);
 }

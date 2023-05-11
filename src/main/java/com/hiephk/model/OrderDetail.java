@@ -22,8 +22,6 @@ public class OrderDetail {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int _id;
 	@Column
-	private int price;
-	@Column
 	private int quantity;
 	@Column
 	private int orderId;

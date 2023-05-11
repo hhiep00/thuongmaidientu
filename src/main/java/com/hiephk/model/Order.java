@@ -1,5 +1,7 @@
 package com.hiephk.model;
 
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,17 +24,11 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int _id;
 	@Column
-	private String orderStatus;
-	@Column
-	private String paymentStatus;
-	@Column
-	private String shipmentStatus;
-	@Column
 	private int totalPrice;
 	@Column
-	private int paymentId;
+	private Date createdAt;
 	@Column
-	private int shipmentId;
+	private Date updatedAt;
 	@Column
 	private int userId;
 }

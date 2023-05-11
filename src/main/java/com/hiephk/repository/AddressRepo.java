@@ -1,12 +1,11 @@
 package com.hiephk.repository;
 
-import java.util.Optional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.hiephk.model.Order;
+import com.hiephk.model.Address;
+
 @Repository
-public interface OrderRepo extends JpaRepository<Order, Integer>{
-	
+public interface AddressRepo extends JpaRepository<Address, Integer>{
+	Address findByOrderId(int orderId);
 }
