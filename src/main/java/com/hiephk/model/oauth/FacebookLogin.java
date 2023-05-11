@@ -60,7 +60,7 @@ public class FacebookLogin {
         System.out.println(token);
         response.addCookie(cookie);
 
-        return new RedirectView("http://localhost:3000/");
+        return new RedirectView("http://localhost:4173/");
     }
 
 }

@@ -74,15 +74,24 @@ public class ProductController {
 	@GetMapping("/search")
 	public SearchProductResponse searchProduct(@RequestParam(name = "page") int page, @RequestParam(name = "brand") String brand,
 			@RequestParam(name = "category") String category, @RequestParam(name = "query") String query){
-		List<Product> list = productService.searchProduct(page, brand, category, query);
 		List<String> brands = new ArrayList<>();
-		brands.add("hehe");
-		brands.add("huhu");
+		List<String> categories = new ArrayList<>();
+		List<Product> listAll = productService.findAll();
+		
+		for(Product product:listAll) {
+			if(!brands.contains(product.getBrand()))
+				brands.add(product.getBrand());
+			if(!categories.contains(product.getCategory()))
+				categories.add(product.getCategory());
+		}
+		
+		List<Product> listSearch = productService.searchProduct(page, brand, category, query);
+		
 		return SearchProductResponse.builder()
-				.countProducts(list.size())
-				.productDocs(list)
+				.countProducts(listSearch.size())
+				.productDocs(listSearch)
 				.brands(brands)
-				.categories(brands)
+				.categories(categories)
 				.page(1)
 				.pages(1)
 				.build();

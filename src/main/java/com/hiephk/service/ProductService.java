@@ -37,10 +37,10 @@ public class ProductService {
 		return productRepo.findById(id);
 	}
 
-	public List<Product> searchProduct(int page, String brand, String category, String query) {
+	public List<Product> searchProduct(int page, String brand, String category, String name) {
 		
 		
-		return productRepo.findAll();
+		return productRepo.advancedSearch(brand, category, name);
 	}
 
 	public Product save(Product product) {
